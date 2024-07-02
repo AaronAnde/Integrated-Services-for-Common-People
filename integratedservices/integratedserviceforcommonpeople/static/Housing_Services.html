@@ -19,7 +19,6 @@
             for (var i = 0; i < links.length; i++) {
                 var link = links[i];
                 if (link.getAttribute('href') && !link.getAttribute('href').startsWith('#')) { // Check if the link is not an internal anchor
-                    link.setAttribute('target', '_blank');
                     link.setAttribute('rel', 'noopener noreferrer'); // Security best practice
                 }
             }
