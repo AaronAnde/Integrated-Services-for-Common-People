@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>RSS Feed</h1>
+  <ul>
+    {% for entry in feed.entries %}
+      <li>
+        <h2>{{ entry.title }}</h2>
+        <p>{{ entry.description }}</p>
+        {% comment %} <p>Published: {{ entry.published }}</p> {% endcomment %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

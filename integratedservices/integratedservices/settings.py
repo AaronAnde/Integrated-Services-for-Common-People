@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'integratedserviceforcommonpeople'
+    'integratedserviceforcommonpeople',
+    'django_celery_beat',
+    'feedparser',
+    'django.contrib.syndication'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +130,11 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'signin'
 
 DEBUG = True
+
+# settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # or your preferred broker
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
