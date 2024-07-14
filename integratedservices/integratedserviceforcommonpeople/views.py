@@ -7,6 +7,10 @@ from .forms import ServiceRegistrationForm
 from .models import Service,SERVICE_TYPES
 from .forms import ContactForm
 from django.contrib.auth import logout
+from django.shortcuts import render, get_object_or_404
+from .models import Service
+import feedparser
+
 @login_required
 def service_registration(request):
     if request.method == 'POST':
@@ -79,3 +83,15 @@ def index(request):
 def logout_view(request):
     logout(request)
     return redirect('')
+
+
+
+def service_detail(request, pk):
+    service = get_object_or_404(Service, pk=pk)
+    return render(request, 'service_detail.html', {'service': service})
+
+@login_required
+def rss_feed_view(request):
+    url = "http://127.0.0.1:8000/services/feed/"
+    feed = feedparser.parse(url)
+    return render(request, 'rss_feed.html', {'feed': feed,'username': request.user.username})

@@ -8,7 +8,11 @@ Pre Requesite
 ```
 pip install django
  ```
+### Install Other Dependencies
 
+```
+pip install feedparser celery django-celery-beat
+```
 ### Make the database migrate
 ``` 
 cd integratedservices
